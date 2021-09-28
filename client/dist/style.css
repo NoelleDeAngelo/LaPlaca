@@ -60,7 +60,7 @@ body {
   border-radius: 10px;
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .hamburger-menu {
     display: flex;
   }

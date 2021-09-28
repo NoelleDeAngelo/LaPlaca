@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 class Nav extends React.Component {
   render(){
@@ -12,10 +13,10 @@ class Nav extends React.Component {
           </a>
         <div className= "nav-links">
           <ul>
-            <li><a href = '#' >Home</a></li>
-            <li><a href = '#' >Our Story</a></li>
-            <li><a href = '#' >Pizza</a></li>
-            <li><a href = '#' >Contact Us</a></li>
+            <li><Link to ='/' >Home</Link></li>
+            <li><Link to = '/OurStory' >Our Story</Link></li>
+            <li><Link to = '/Pizza' >Pizza</Link></li>
+            <li><Link to = '/ContactUs' >Contact Us</Link></li>
           </ul>
         </div>
       </nav>
