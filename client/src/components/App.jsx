@@ -1,10 +1,11 @@
 import React from "react";
+import Nav from './Nav.jsx'
 
 class App extends React.Component {
   render(){
     return(
       <div className="App">
-        <h1> Hello, World! </h1>
+        <Nav />
       </div>
     );
   }

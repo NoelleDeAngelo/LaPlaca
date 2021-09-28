@@ -6,7 +6,7 @@ app.use(express.static('client'))
 
 
 app.get('/', (req, res)=>{
-  res.render('../client/index.html')
+  res.render('../client/dist.bundle.js')
 })
 
 app.listen(3000, ()=> console.log('listening on 3000'));
