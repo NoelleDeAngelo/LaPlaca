@@ -5,7 +5,7 @@ class Nav extends React.Component {
     return(
       <nav className="nav">
         <div className= 'brand-name'>La Placa</div>
-        <a href= '#' className = 'hamburger-menu'>
+        <a  onClick = {(event)=> {document.getElementsByClassName("nav-links")[0].classList.toggle('active')}} href= '#' className = 'hamburger-menu'>
           <span className= 'bar'></span>
           <span className= 'bar'></span>
           <span className= 'bar'></span>
