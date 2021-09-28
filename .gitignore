@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+
+# webpack output bundle
+/client/dist/bundle.js
+
+package-lock.json
+.DS_Store
