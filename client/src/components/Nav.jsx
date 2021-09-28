@@ -5,6 +5,11 @@ class Nav extends React.Component {
     return(
       <nav className="nav">
         <div className= 'brand-name'>La Placa</div>
+        <a href= '#' className = 'hamburger-menu'>
+          <span className= 'bar'></span>
+          <span className= 'bar'></span>
+          <span className= 'bar'></span>
+          </a>
         <div className= "nav-links">
           <ul>
             <li><a href = '#' >Home</a></li>

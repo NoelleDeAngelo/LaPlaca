@@ -42,3 +42,53 @@ body {
   background-color: #717D7E;
 }
 
+.hamburger-menu {
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.hamburger-menu .bar {
+  height: 3px;
+  width: 100%;
+  background-color: antiquewhite;
+  border-radius: 10px;
+}
+
+@media(max-width: 500px) {
+  .hamburger-menu {
+    display: flex;
+  }
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links ul {
+  flex-direction: column;
+    width: 100;
+  }
+  .nav-links{
+    width: 100%;
+  }
+  .nav-links li {
+    text-align: center;
+  }
+  .nav-links li a {
+    padding: .5rem 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+
+
+}
+
+
