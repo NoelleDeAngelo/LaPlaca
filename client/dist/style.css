@@ -5,7 +5,10 @@
 body {
   margin: 0;
   padding: 0;
+}
 
+.brand-name{
+  font-family: 'Dancing Script', cursive;;
 }
 
 .nav {
@@ -16,10 +19,12 @@ body {
   color: antiquewhite;
 }
 
-.brand-name {
+
+#nav-brand-name {
   font-size: 2rem;
   margin: .5rem ;
 }
+
 
 .nav-links ul {
   margin: 0;
@@ -87,9 +92,17 @@ body {
   .nav-links.active {
     display: flex;
   }
-
-
-
 }
+
+#home-page {
+  height: 100vh;
+  background-image:linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url('BakedGoods.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+
 
 
