@@ -5,7 +5,12 @@ class Home extends React.Component {
   render(){
     return(
       <div id='home-page'>
-        <div className= 'brand-name'>LaPlaca</div>
+        <div id= 'name-box'>
+          <p className= 'brand-name' id= 'home-brand-name'>LaPlaca</p>
+          <p id= 'home-tagline'>Family Bakery and Pizzeria</p>
+        </div>
+
+
       </div>
     );
   }
