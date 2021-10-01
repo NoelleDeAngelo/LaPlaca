@@ -9,8 +9,11 @@ class Home extends React.Component {
           <p className= 'brand-name' id= 'home-brand-name'>LaPlaca</p>
           <p id= 'home-tagline'>Family Bakery and Pizzeria</p>
         </div>
-
-
+        <div id= 'location-box'>
+          <p><u>Location</u></p>
+          <p id= 'location'>9280 highway 9 <br/>
+            Ben Lomond, CA, CA 95005</p>
+        </div>
       </div>
     );
   }
