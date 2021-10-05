@@ -126,6 +126,35 @@ body {
 }
 
 /* Pizza Page */
+.pizza-page{
+  font-family: 'Zilla Slab', serif;
+}
+.pizza-page h1{
+  margin-left: 40px
+
+}
+
+#order-button {
+  margin-left: 40px;
+  box-shadow: 0px 10px 14px -7px #3e7327;
+	background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+	background-color:#77b55a;
+	border-radius:4px;
+	border:1px solid #4b8f29;
+	cursor:pointer;
+	color:#ffffff;
+  font-size: 1.2rem;
+	font-weight:bold;
+	padding:6px 12px;
+	text-shadow:0px 1px 0px #5b8a3c;
+
+}
+
+#order-button:hover {
+  background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+	background-color:#72b352;
+  
+}
 
 #pizza-order-form{
   display: flex;

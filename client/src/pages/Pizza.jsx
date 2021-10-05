@@ -19,9 +19,9 @@ class Pizza extends React.Component {
 
   render(){
     return(
-      <div>
-        <h1>Pizza</h1>
-        <button onClick= {()=> this.setState({modalIsOpen:true})}>Order Pizza</button>
+      <div className = 'pizza-page'>
+        <h1><u>Pizza</u></h1>
+        <button id ='order-button' onClick= {()=> this.setState({modalIsOpen:true})}>Order A Pizza</button>
         <Modal isOpen ={this.state.modalIsOpen}
          onRequestClose= {()=> this.setState({modalIsOpen:false, pizzaSelected: 'none'})}
           style={{
