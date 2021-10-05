@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import PizzaDes from '../components/PizzaDes.jsx'
 
 
 class Pizza extends React.Component {
@@ -7,7 +8,12 @@ class Pizza extends React.Component {
     super(props);
     this.state={
       modalIsOpen: false,
+      pizzaSelected: 'none'
     }
+  }
+
+  changePizzaSelected(type){
+    this.setState({pizzaSelected: type});
   }
 
 
@@ -28,6 +34,22 @@ class Pizza extends React.Component {
                <input type= 'text' name= 'customer-first-name' required></input> <br></br>
                <label for = 'customer-last-name'>Last Name: </label>
                <input type= 'text' name= 'customer-last-name' required></input>
+               <p> Pizza Type: </p>
+               <div>
+                <input onClick = {()=> {this.changePizzaSelected('fourCheese')}} type= 'radio' id= 'four-cheese' name = 'pizza-type' value = 'four-cheese'></input>
+                <label for = 'four-cheese'> Four Cheese </label>
+               </div>
+              <div>
+                <input onClick = {()=> {this.changePizzaSelected('veg')}}type= 'radio' id= 'veg' name = 'pizza-type' value = 'veg'></input>
+                <label for = 'veg'> Veggie </label>
+              </div>
+              <div>
+                <input onClick = {()=> {this.changePizzaSelected('byo')}} type= 'radio' id= 'byo' name = 'pizza-type' value = 'byo'></input>
+                <label for = 'byo'> Build Your Own </label>
+              </div>
+              <PizzaDes type= {this.state.pizzaSelected}/>
+
+
              </form>
           </Modal>
       </div>
@@ -36,3 +58,6 @@ class Pizza extends React.Component {
 }
 
 export default Pizza;
+
+
+// document.querySelector('input[name="pizza-type"]:checked')? document.querySelector('input[name="pizza-type"]:checked').value : 'none'
