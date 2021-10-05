@@ -23,11 +23,11 @@ class Pizza extends React.Component {
         <h1>Pizza</h1>
         <button onClick= {()=> this.setState({modalIsOpen:true})}>Order Pizza</button>
         <Modal isOpen ={this.state.modalIsOpen}
-         onRequestClose= {()=> this.setState({modalIsOpen:false})}
+         onRequestClose= {()=> this.setState({modalIsOpen:false, pizzaSelected: 'none'})}
           style={{
           'overlay': {'background':'grey'},
           'content': {'color':'black', 'width': '450px', 'margin':'auto'} }}>
-             <span style={{'float': 'right', 'fontSize': '150%'}} onClick= {()=> this.setState({modalIsOpen:false}) }>&#10006;</span>
+             <span style={{'float': 'right', 'fontSize': '150%'}} onClick= {()=> this.setState({modalIsOpen:false, pizzaSelected: 'none'}) }>&#10006;</span>
              <form name= 'pizza-order' id= 'pizza-order-form'>
               <h2>Order Your Pizza</h2>
               <label for = 'customer-first-name'>First Name: </label>
