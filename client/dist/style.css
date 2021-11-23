@@ -28,7 +28,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color:#5F6A6A;
-  color: antiquewhite;
+  color: whitesmoke;
   box-shadow: 0 4px 10px rgb(109 120 136 / 30%);
 }
 
@@ -49,11 +49,12 @@ body {
 
 .nav-links li {
   list-style: none;
+  font-size: 1.2rem;
 }
 
 .nav-links li a {
   text-decoration: none;
-  color: antiquewhite;
+  color: whitesmoke;
   padding: 1rem;
   display: block;
 }
@@ -141,10 +142,11 @@ body {
 
 /* Pizza Page */
 .pizza-page{
-  font-family: 'Zilla Slab', serif;
+  font-family: 'Roboto', sans-serif;
 }
 .pizza-page h1{
-  margin-left: 40px;
+  text-align: center;
+  font-size: 3rem;
 }
 
 .pizzas-list{
@@ -155,6 +157,7 @@ body {
 }
 
 .pizza-card {
+  font-family: 'Zilla Slab', serif;
   width: calc(33.3333% - 40px);
   min-width: 300px;
   margin:10px;
@@ -173,6 +176,7 @@ body {
 .pizza-card-text {
   padding-left: 10px;
 }
+
 
 
 
