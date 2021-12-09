@@ -52,9 +52,9 @@ class Pizza extends React.Component {
   }
 
   selectSize(size){
-  var addedIngredientsPrice = this.state.added.reduce((acc,b)=> acc + this.toppings[b].price[size] , 0)
-    var price = this.state.pizzaSelected.price[size] + addedIngredientsPrice;
-    this.setState({pizzaSize: size, pizzaPrice: price })
+    var addedIngredientsPrice = this.state.added.reduce((acc,b)=> acc + this.toppings[b].price[size] , 0)
+    var totalPrice = this.state.pizzaSelected.price[size] + addedIngredientsPrice;
+    this.setState({pizzaSize: size, pizzaPrice: totalPrice })
     var sizeElms= document.getElementsByClassName('pizza-size');
     for(var i =0; i< sizeElms.length; i++){
       sizeElms[i].style.border= '2px solid rgb(224, 222, 217)'
@@ -62,16 +62,15 @@ class Pizza extends React.Component {
     document.getElementById('pizza-size-'+ size).style.border= '1px solid #cc2b2b'
   }
   updatePizzaPrice(ingredient, ingredientPrice, selected, included){
-    console.log(ingredient)
     if (included){return};
     if (selected){
       var added = this.state.added
       added.push(ingredient)
-      this.setState((state)=>{return {added: added, pizzaPrice: state.pizzaPrice + ingredientPrice}}, ()=>{console.log(this.state.added)})
+      this.setState((state)=>{return {added: added, pizzaPrice: state.pizzaPrice + ingredientPrice}})
     } else {
       var added = this.state.added;
       added= added.filter((add)=>add !== ingredient)
-      this.setState((state)=>{return {added: added, pizzaPrice: state.pizzaPrice - ingredientPrice}}, ()=>{console.log(this.state.added)})
+      this.setState((state)=>{return {added: added, pizzaPrice: state.pizzaPrice - ingredientPrice}})
     }
   }
 
