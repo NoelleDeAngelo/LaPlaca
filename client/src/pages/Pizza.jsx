@@ -14,11 +14,12 @@ class Pizza extends React.Component {
       pizzaSelected: 'none',
       pizzaSize: null,
       pizzaPrice:0,
+      added:[],
     }
     this.toppings = {
       redSauce: {name: 'Red Sauce', price:{small: 0, large: 0}},
       whiteSauce: {name: 'White Sauce', price:{small: 0, large: 0}},
-      mozzarella: {name: 'Mozzarella', price:{small: 0.5, large: 1}},
+      mozzarella: {name: 'Mozzarella', price:{small: 0, large: 0}},
       blueCheese: {name: 'Blue Cheese', price:{small: .75, large: 1.75}},
       feta: {name: 'Feta', price:{small: 1.75, large: 3}},
       parmesan: {name: 'Parmesan', price:{small: .5, large: 1}},
@@ -51,21 +52,30 @@ class Pizza extends React.Component {
   }
 
   selectSize(size){
-    this.setState({pizzaSize: size, pizzaPrice: this.state.pizzaSelected.price[size]})
+  var addedIngredientsPrice = this.state.added.reduce((acc,b)=> acc + this.toppings[b].price[size] , 0)
+    var price = this.state.pizzaSelected.price[size] + addedIngredientsPrice;
+    this.setState({pizzaSize: size, pizzaPrice: price })
     var sizeElms= document.getElementsByClassName('pizza-size');
     for(var i =0; i< sizeElms.length; i++){
       sizeElms[i].style.border= '2px solid rgb(224, 222, 217)'
     }
     document.getElementById('pizza-size-'+ size).style.border= '1px solid #cc2b2b'
   }
-  updatePizzaPrice(ingredientPrice, selected, included){
+  updatePizzaPrice(ingredient, ingredientPrice, selected, included){
+    console.log(ingredient)
     if (included){return};
     if (selected){
-      this.setState((state)=>{return {pizzaPrice: state.pizzaPrice + ingredientPrice}})
+      var added = this.state.added
+      added.push(ingredient)
+      this.setState((state)=>{return {added: added, pizzaPrice: state.pizzaPrice + ingredientPrice}}, ()=>{console.log(this.state.added)})
     } else {
-      this.setState((state)=>{return {pizzaPrice: state.pizzaPrice - ingredientPrice}})
+      var added = this.state.added;
+      added= added.filter((add)=>add !== ingredient)
+      this.setState((state)=>{return {added: added, pizzaPrice: state.pizzaPrice - ingredientPrice}}, ()=>{console.log(this.state.added)})
     }
   }
+
+
 
 
 render(){
@@ -109,12 +119,12 @@ render(){
           </div>
           {this.state.pizzaSelected.ingredients.length ? <h4>YOUR INCLUDED TOPPINGS</h4> : null}
           <div style= {{'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'space-evenly' }}>
-          {this.state.pizzaSelected.ingredients.map((ingredient)=><PizzaTopping updatePizzaPrice = {this.updatePizzaPrice} name= {this.toppings[ingredient].name} price = {this.toppings[ingredient].price[this.state.pizzaSize]} size= {this.state.pizzaSize} selected= {true} included= {true}/>)}
+          {this.state.pizzaSelected.ingredients.map((ingredient)=><PizzaTopping  ingredient = {ingredient} updatePizzaPrice = {this.updatePizzaPrice} name= {this.toppings[ingredient].name} price = {this.toppings[ingredient].price[this.state.pizzaSize]} size= {this.state.pizzaSize} selected= {true} included= {true}/>)}
           </div>
           </div>
           <h4>ADD TOPPINGS</h4>
           <div style= {{'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'space-evenly' }}>
-          {this.state.pizzaSelected.notIncluded.map((ingredient)=><PizzaTopping  updatePizzaPrice = {this.updatePizzaPrice} name= {this.toppings[ingredient].name} price = {this.toppings[ingredient].price[this.state.pizzaSize]}  size= {this.state.pizzaSize} selected= {false} included= {false}/>)}
+          {this.state.pizzaSelected.notIncluded.map((ingredient)=><PizzaTopping ingredient = {ingredient} updatePizzaPrice = {this.updatePizzaPrice} name= {this.toppings[ingredient].name} price = {this.toppings[ingredient].price[this.state.pizzaSize]}  size= {this.state.pizzaSize}  selected= {false} included= {false}/>)}
         </div>
         <button className= 'add-to-cart'>Add To Cart - ${this.state.pizzaPrice.toFixed(2)}</button>
       </Modal>

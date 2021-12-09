@@ -10,7 +10,7 @@ class PizzaTopping extends React.Component {
   }
   handleIngredientClick(size){
     if(size){
-       this.setState((state)=>{return {selected: !state.selected}}, ()=> {this.props.updatePizzaPrice(this.props.price, this.state.selected, this.props.included)})
+    this.setState((state)=>{return {selected: !state.selected}}, ()=> {this.props.updatePizzaPrice(this.props.ingredient, this.props.price, this.state.selected, this.props.included)})
     }
 
   }
