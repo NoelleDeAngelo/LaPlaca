@@ -177,6 +177,14 @@ body {
   padding-left: 10px;
 }
 
+.pizza-topping-card {
+  margin-top: 10px;
+  width: 30%;
+  box-shadow: 0 4px 10px rgb(74 74 74 / 30%);
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 
 

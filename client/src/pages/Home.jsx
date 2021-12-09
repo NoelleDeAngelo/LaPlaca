@@ -11,7 +11,7 @@ class Home extends React.Component {
         </div>
         <div id= 'location-box'>
           <p><u>Location</u></p>
-          <p id= 'location'>80 Highway 9 <br/>
+          <p id= 'location'>80 Highway 19 <br/>
             Ben Lomond, CA 95005</p>
         </div>
       </div>
