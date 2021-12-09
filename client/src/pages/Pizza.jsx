@@ -4,6 +4,7 @@ import PizzaDes from '../components/PizzaDes.jsx'
 import PizzaTopping from '../components/PizzaTopping.jsx'
 
 
+
 class Pizza extends React.Component {
   constructor(props){
     super(props);
@@ -74,7 +75,9 @@ class Pizza extends React.Component {
     }
   }
 
-
+  closeModal(){
+    this.setState({modalIsOpen:false, pizzaSelected: 'none'})
+  }
 
 
 render(){
@@ -96,7 +99,7 @@ render(){
         style={{
           'overlay': {'background': 'rgb(74 74 74 / 45%)'},
           'content': {'boxShadow': '0 4px 10px rgb(74 74 74 / 30%)', 'color':'black', 'width': '60%', 'maxWidth': '750px', 'margin':'auto', 'display': 'flex', 'flexDirection': 'column'} }}>
-        <span style={{'float': 'right', 'fontSize': '150%', 'alignSelf': 'end', 'cursor': 'pointer'}} onClick= {()=> this.setState({modalIsOpen:false, pizzaSelected: 'none'}) }>&#10006;</span>
+        <span style={{'float': 'right', 'fontSize': '150%', 'alignSelf': 'end', 'cursor': 'pointer'}} onClick= {()=>{this.closeModal()}}>&#10006;</span>
         <div style= {{'display': 'flex'}}>
           <img style= {{'height': '200px', 'width': '200px', 'objectFit': 'cover'}} src = {this.state.pizzaSelected.picture}></img>
           <div style= {{'marginLeft': '5%'}}>
@@ -125,7 +128,7 @@ render(){
           <div style= {{'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'space-evenly' }}>
           {this.state.pizzaSelected.notIncluded.map((ingredient)=><PizzaTopping ingredient = {ingredient} updatePizzaPrice = {this.updatePizzaPrice} name= {this.toppings[ingredient].name} price = {this.toppings[ingredient].price[this.state.pizzaSize]}  size= {this.state.pizzaSize}  selected= {false} included= {false}/>)}
         </div>
-        <button className= 'add-to-cart'>Add To Cart - ${this.state.pizzaPrice.toFixed(2)}</button>
+        <button onClick= {()=>{this.props.updateCartTotal(false, this.state.pizzaPrice); this.closeModal() }} className= 'add-to-cart'>Add To Cart - ${this.state.pizzaPrice.toFixed(2)}</button>
       </Modal>
       }
 
