@@ -8,16 +8,46 @@ class Pizza extends React.Component {
   constructor(props){
     super(props);
     this.selectPizza = this.selectPizza.bind(this)
+    this.updatePizzaPrice = this.updatePizzaPrice.bind(this)
     this.state={
       modalIsOpen: false,
       pizzaSelected: 'none',
       pizzaSize: null,
-      pizzaPrice:'none',
+      pizzaPrice:0,
     }
+    this.toppings = {
+      redSauce: {name: 'Red Sauce', price:{small: 0, large: 0}},
+      whiteSauce: {name: 'White Sauce', price:{small: 0, large: 0}},
+      mozzarella: {name: 'Mozzarella', price:{small: 0.5, large: 1}},
+      blueCheese: {name: 'Blue Cheese', price:{small: .75, large: 1.75}},
+      feta: {name: 'Feta', price:{small: 1.75, large: 3}},
+      parmesan: {name: 'Parmesan', price:{small: .5, large: 1}},
+      broccoli: {name: 'Broccoli', price:{small: 1.5, large: 3}},
+      bellPepper:{ name: 'Bell Pepper', price:{small: 1.5, large: 2.5}},
+      garlic: {name: 'Garlic', price:{small: 1.5, large: 2.5}},
+      onion: {name: 'Red Onion', price:{small: 0.75, large: 2}},
+      tomatoes: {name: 'Tomatoes', price:{small: 1.75, large: 3}},
+      artichokes: {name: 'Artichokes', price:{small: 3, large: 4}},
+      mushroom: {name: 'Mushroom', price:{small: 3, large: 4}},
+      chicken: {name: 'Chicken', price:{small: 2, large: 4}},
+      bacon: {name: 'Bacon', price:{small: 1.5, large: 3.5}},
+    }
+
+  }
+
+  determineNotIncluded(included){
+    var notIncluded = []
+    for (var key in this.toppings){
+      if (included.indexOf(key) === -1){
+        notIncluded.push(key)
+      }
+    }
+    return notIncluded;
   }
 
   selectPizza(pizza){
-    this.setState({modalIsOpen: true, pizzaSelected: pizza});
+    pizza.notIncluded = this.determineNotIncluded(pizza.ingredients)
+    this.setState({modalIsOpen: true, pizzaSelected: pizza, pizzaPrice: 0, pizzaSize: null});
   }
 
   selectSize(size){
@@ -28,7 +58,14 @@ class Pizza extends React.Component {
     }
     document.getElementById('pizza-size-'+ size).style.border= '1px solid #cc2b2b'
   }
-
+  updatePizzaPrice(ingredientPrice, selected, included){
+    if (included){return};
+    if (selected){
+      this.setState((state)=>{return {pizzaPrice: state.pizzaPrice + ingredientPrice}})
+    } else {
+      this.setState((state)=>{return {pizzaPrice: state.pizzaPrice - ingredientPrice}})
+    }
+  }
 
 
 render(){
@@ -72,13 +109,14 @@ render(){
           </div>
           {this.state.pizzaSelected.ingredients.length ? <h4>YOUR INCLUDED TOPPINGS</h4> : null}
           <div style= {{'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'space-evenly' }}>
-          {this.state.pizzaSelected.ingredients.map((ingredient)=><PizzaTopping name= {ingredient} size = {this.state.pizzaSize} selected= {true}/>)}
+          {this.state.pizzaSelected.ingredients.map((ingredient)=><PizzaTopping updatePizzaPrice = {this.updatePizzaPrice} name= {this.toppings[ingredient].name} price = {this.toppings[ingredient].price[this.state.pizzaSize]} size= {this.state.pizzaSize} selected= {true} included= {true}/>)}
           </div>
           </div>
-          {this.state.pizzaSelected.ingredients.length ? <h4>ADD TOPPINGS</h4> : null}
+          <h4>ADD TOPPINGS</h4>
           <div style= {{'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'space-evenly' }}>
-          {this.state.pizzaSelected.ingredients.map((ingredient)=><PizzaTopping name= {ingredient} size = {this.state.pizzaSize} selected= {false}/>)}
+          {this.state.pizzaSelected.notIncluded.map((ingredient)=><PizzaTopping  updatePizzaPrice = {this.updatePizzaPrice} name= {this.toppings[ingredient].name} price = {this.toppings[ingredient].price[this.state.pizzaSize]}  size= {this.state.pizzaSize} selected= {false} included= {false}/>)}
         </div>
+        <button className= 'add-to-cart'>Add To Cart - ${this.state.pizzaPrice.toFixed(2)}</button>
       </Modal>
       }
 

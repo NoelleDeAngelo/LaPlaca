@@ -35,6 +35,7 @@ class PizzaDes extends React.Component {
     };
 
     let pizza = pizzaDescription[this.props.type];
+    
 
     return(
       <div  onClick= {()=> this.props.selectPizza(pizza)}className = 'pizza-card flex-column'>
