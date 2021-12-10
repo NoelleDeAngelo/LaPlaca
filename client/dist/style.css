@@ -58,6 +58,12 @@ body {
   padding: 1rem;
   display: block;
 }
+.nav-links li div {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 1rem;
+  display: block;
+}
 
 
 .nav-links li:hover {

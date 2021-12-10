@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import swal from 'sweetalert';
+
 
 class Nav extends React.Component {
 
@@ -7,7 +9,7 @@ class Nav extends React.Component {
     return(
       <nav className="nav">
         <div className= 'brand-name' id='nav-brand-name'>LaBlaca </div>
-        <a  onClick = {(event)=> {document.getElementsByClassName("nav-links")[0].classList.toggle('active')}} href= '#' className = 'hamburger-menu'>
+        <a onClick = {(event)=> {document.getElementsByClassName("nav-links")[0].classList.toggle('active')}} href= '#' className = 'hamburger-menu'>
           <span className= 'bar'></span>
           <span className= 'bar'></span>
           <span className= 'bar'></span>
@@ -18,7 +20,8 @@ class Nav extends React.Component {
             <li><Link to = '/OurStory' >Our Story</Link></li>
             <li><Link to = '/Pizza' >Pizza</Link></li>
             <li><Link to = '/ContactUs' >Contact Us</Link></li>
-            <li><Link to = '/Checkout' ><i className="fas fa-shopping-cart"></i>  ${this.props.cartTotal.toFixed(2)}</Link></li>
+            {this.props.cartTotal == 0 ? <li><div onClick= {()=>{swal('Your cart is empty', 'but your stomach does not have to be.')}}><i className="fas fa-shopping-cart"></i>  ${this.props.cartTotal.toFixed(2)}</div></li> :
+            <li><Link to = '/Checkout' ><i className="fas fa-shopping-cart"></i>  ${this.props.cartTotal.toFixed(2)}</Link></li>}
           </ul>
         </div>
       </nav>
