@@ -18,7 +18,7 @@ class Nav extends React.Component {
             <li><Link to = '/OurStory' >Our Story</Link></li>
             <li><Link to = '/Pizza' >Pizza</Link></li>
             <li><Link to = '/ContactUs' >Contact Us</Link></li>
-            <li><Link to = '/ContactUs' ><i className="fas fa-shopping-cart"></i>  ${this.props.cartTotal.toFixed(2)}</Link></li>
+            <li><Link to = '/Checkout' ><i className="fas fa-shopping-cart"></i>  ${this.props.cartTotal.toFixed(2)}</Link></li>
           </ul>
         </div>
       </nav>

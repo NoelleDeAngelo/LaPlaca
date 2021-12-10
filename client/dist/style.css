@@ -187,6 +187,13 @@ body {
   cursor: pointer;
 }
 
+/*CheckOut Page*/
+
+
+.fa-trash-alt{
+  color:tomato
+}
+
 
 
 /* #order-button {
