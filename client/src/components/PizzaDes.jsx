@@ -15,7 +15,7 @@ class PizzaDes extends React.Component {
         des:'A pizza with every cheese imaginable, if you only imagine four cheeses.',
         ingredients: ['redSauce', 'blueCheese', 'mozzarella', 'feta', 'parmesan'],
         price:{small: 16.00, large: 19.00},
-        picture: '../../dist/PeperoniPizza.jpg',
+        picture: '../../dist/CheesePizza.jpeg',
       } ,
       veg:{
         name: 'Vegetable',
@@ -31,11 +31,18 @@ class PizzaDes extends React.Component {
         price:{small: 15.00, large: 18.00},
         picture: '../../dist/ByoPizza.jpg'
       },
+      meat:{
+        name: 'Meat Overload',
+        des:'For the real meat lover. This pizza has nothing but the best. ',
+        ingredients: ['chicken', 'bacon', 'pepperoni'],
+        price:{small: 20.00, large: 25.00},
+        picture: '../../dist/PepperoniPizza.jpg',
+      } ,
       none: 'Please select a pizza'
     };
 
     let pizza = pizzaDescription[this.props.type];
-    
+
 
     return(
       <div  onClick= {()=> this.props.selectPizza(pizza)}className = 'pizza-card flex-column'>

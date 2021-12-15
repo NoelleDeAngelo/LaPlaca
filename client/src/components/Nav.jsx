@@ -20,7 +20,7 @@ class Nav extends React.Component {
             <li><Link to = '/OurStory' >Our Story</Link></li>
             <li><Link to = '/Pizza' >Pizza</Link></li>
             <li><Link to = '/ContactUs' >Contact Us</Link></li>
-            {this.props.cartTotal == 0 ? <li><div onClick= {()=>{swal('Your cart is empty', 'but your stomach does not have to be.')}}><i className="fas fa-shopping-cart"></i>  ${this.props.cartTotal.toFixed(2)}</div></li> :
+            {this.props.cartTotal == 0 ? <li><div onClick= {()=>{swal('Your cart is empty', `but your stomach doesn't have to be.`)}}><i className="fas fa-shopping-cart"></i>  ${this.props.cartTotal.toFixed(2)}</div></li> :
             <li><Link to = '/Checkout' ><i className="fas fa-shopping-cart"></i>  ${this.props.cartTotal.toFixed(2)}</Link></li>}
           </ul>
         </div>

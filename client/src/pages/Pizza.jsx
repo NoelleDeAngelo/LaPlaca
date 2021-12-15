@@ -33,6 +33,7 @@ class Pizza extends React.Component {
       mushroom: {name: 'Mushroom', price:{small: 3, large: 4}},
       chicken: {name: 'Chicken', price:{small: 2, large: 4}},
       bacon: {name: 'Bacon', price:{small: 1.5, large: 3.5}},
+      pepperoni: {name: 'Pepperoni', price:{small: 2, large: 4}},
     }
 
   }
@@ -102,7 +103,7 @@ render(){
         <PizzaDes selectPizza = {this.selectPizza} type= 'cheese'/>
         <PizzaDes selectPizza = {this.selectPizza} type= 'veg'/>
         <PizzaDes selectPizza = {this.selectPizza} type= 'cheese'/>
-        <PizzaDes selectPizza = {this.selectPizza} type= 'veg'/>
+        <PizzaDes selectPizza = {this.selectPizza} type= 'meat'/>
         <PizzaDes selectPizza = {this.selectPizza} type= 'byo'/>
       </div>
       {this.state.pizzaSelected !== 'none' &&
@@ -141,7 +142,7 @@ render(){
           <div style= {{'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'space-evenly' }}>
           {this.state.pizzaSelected.notIncluded.map((ingredient)=><PizzaTopping ingredient = {ingredient} updatePizzaPrice = {this.updatePizzaPrice} name= {this.toppings[ingredient].name} price = {this.toppings[ingredient].price[this.state.pizzaSize]}  size= {this.state.pizzaSize}  selected= {false} included= {false}/>)}
         </div>
-        <button onClick= {()=>{this.handleAddToCart()}} className= 'add-to-cart'>Add To Cart - ${this.state.pizzaPrice.toFixed(2)}</button>
+        <button onClick= {()=>{this.handleAddToCart()}} className= 'add-to-cart'>ADD TO ORDER - ${this.state.pizzaPrice.toFixed(2)}</button>
       </Modal>
       }
 
